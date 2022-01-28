@@ -16,8 +16,9 @@ object Hell {
     prop.put("user", "root")
     prop.put("password", "18651865")
 
-    val tableDf = spark.read.jdbc("jdbc:mysql://localhost:3306/horus?useUnicode=true&characterEncoding=utf8&useSSL=false",
-      "CRAWL_UNIT1", prop)
+    val tableDf = spark.read.jdbc("jdbc:mysql://localhost:13306/horus?" +
+      "useUnicode=true&characterEncoding=utf8&useSSL=false",
+      "crawl_unit1", prop)
 //    tableDf.createOrReplaceTempView("tempTable")
     tableDf.show(10)
 
@@ -25,5 +26,6 @@ object Hell {
     tableDf.createOrReplaceTempView("aya")
     tableDf.sqlContext.sql("select * from aya where CRAWL_NO > 1000").show(10)
 
+    println("Successfully Finished ..")
   }
 }
